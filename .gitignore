@@ -1,0 +1,13 @@
+/_deps
+/bin
+/CMakeFiles
+/include
+/lib
+/src
+cmake_install.cmake 
+CMakeCache.txt
+CPackConfig.cmake
+CPackSourceConfig.cmake
+CTestTestfile.cmake
+tests[1]_include.cmake
+wordle
