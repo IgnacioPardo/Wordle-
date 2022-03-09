@@ -11,3 +11,4 @@ CPackSourceConfig.cmake
 CTestTestfile.cmake
 tests[1]_include.cmake
 wordle
+.breakpoints
