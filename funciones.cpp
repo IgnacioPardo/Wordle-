@@ -8,7 +8,12 @@
 using namespace std;
 
 vector<string> cargar_listado(const string & nombre_archivo){
-    // completar
+		/**
+		 * Genera en un vector<string> a partir un listado de palabras separadas por linebreaks en un archivo dado
+		 *
+		 * @param nombre_archivo Nombre del archivo que contiene las palabras.
+		 * @return vector<string> de las palabras del archivo nombre_archivo
+		 */
 
     vector<string> listado;
 
@@ -22,14 +27,27 @@ vector<string> cargar_listado(const string & nombre_archivo){
 }
 
 bool intento_valido(const string & intento, const string & palabra_secreta, const vector<string> &listado){
-    // completar
+		/**
+		 * Determina si el intento fue uno valido o no
+		 *
+		 * @param intento Palabra a checkear
+		 * @param palabra_secreta Palabra del Wordle
+		 * @param listado Lista de palabras validas
+		 * @return true si la palabra del intento pertenece al listado y tiene la misma longitud que la palabra del Wordle
+		 */
 
     return (intento.size() == palabra_secreta.size()) && (find(listado.begin(), listado.end(), intento) != listado.end());
 
 }
 
 vector<EstadoLetra> evaluar_intento(const string & intento, const string & palabra_secreta){
-    // completar
+		/**
+		 * Determina el estado de cada letra de la palabra ingresada contra la palabra del Wordle
+		 *
+		 * @param intento Palabra a checkear
+		 * @param palabra_secreta Palabra del Wordle
+		 * @return Un vector conteniendo el estado de cada letra de la palabra ingresada
+		 */
 
     vector<EstadoLetra> check;
 
@@ -49,7 +67,13 @@ vector<EstadoLetra> evaluar_intento(const string & intento, const string & palab
 }
 
 string respuesta_en_string(const vector<EstadoLetra> & respuesta){
-    // completar
+		/**
+		 * Convierte un vector de estados en un string para representar el estado general de la palabra ingresada
+		 *
+		 * @param respuesta Un vector conteniendo los estados de cada letra
+		 * @return Un string conteniendo los estados de cada letra a partir de las siguientes representaciones
+		 * 		'X': NoPresente, '+': LugarCorrecto, '-': LugarIncorrecto
+		 */
     string out = "";
     for (EstadoLetra s: respuesta){
         switch (s){
