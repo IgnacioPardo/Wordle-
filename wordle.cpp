@@ -23,18 +23,18 @@ class Wordle {
     public:
 
         Wordle(string file){
-					/**
-					 * Crea un nuevo Wordle a partir de un listado de palabras permitidas
-					 *
-					 */
+			/**
+			 * Crea un nuevo Wordle a partir de un listado de palabras permitidas
+			 *
+			 */
             words = cargar_listado(file);
         }
 
         void newWordle(){
-					/**
-					 * Crea una nueva partida de Wordle randomizando la palabra seleccionada
-					 *
-					 */
+			/**
+			 * Crea una nueva partida de Wordle randomizando la palabra seleccionada
+			 *
+			 */
             srand (time(NULL));
             prev_words = {};
             wordle_otd = words[rand() % words.size()];
@@ -42,10 +42,10 @@ class Wordle {
         }
 
         void playGame(){
-					/**
-					 * Inicializa un nuevo Wordle, y comienza una partida en modo interactivo por consola
-					 *
-					 */
+			/**
+			 * Inicializa un nuevo Wordle, y comienza una partida en modo interactivo por consola
+			 *
+			 */
             newWordle();
             int tries = 0;
             string in;  
@@ -70,20 +70,20 @@ class Wordle {
         }
 
         void renderGame(){
-					/**
-					 * Limpia la consola y muestra el header " - WORDLE - "
-					 *
-					 */
+			/**
+			 * Limpia la consola y muestra el header " - WORDLE - "
+			 *
+			 */
             clear();
             cout << BOLD(FCYN(" - WORDLE - ")) << endl;
         }
 
         void displayVectorString(vector<string> v){
-					/**
-					 * Muestra por consola linea por linea los elementos de un vector de strings
-					 *
-					 *@param v Un vector de strings a printear linea por linea
-					 */
+			/**
+			 * Muestra por consola linea por linea los elementos de un vector de strings
+			 *
+			 *@param v Un vector de strings a printear linea por linea
+			 */
             for (string e: v){
                 cout << e << endl;
             }
@@ -91,23 +91,23 @@ class Wordle {
         }
 
         void clear(){
-					/**
-					 * Limpia la consola
-					 *
-					 */
+			/**
+			 * Limpia la consola
+			 *
+			 */
             printf("\033[2J");
             printf("\033[%d;%dH", 0, 0);
         }
 
 
         string color(string & in, vector<EstadoLetra> ref){
-					/**
-					 * Retorna un string colorizado a partir de un string y un vector de estados por letra del string in.
-					 *
-					 * @param in El string a colorear
-					 * @param ref Un vector de estados por cada letra de in
-					 * @return Un string colorizado a partir de un string y un vector de estados por letra del string in.
-					 */
+			/**
+			 * Retorna un string colorizado a partir de un string y un vector de estados por letra del string in.
+			 *
+			 * @param in El string a colorear
+			 * @param ref Un vector de estados por cada letra de in
+			 * @return Un string colorizado a partir de un string y un vector de estados por letra del string in.
+			 */
             string out = "";
             for (int i = 0; i < in.size(); i++){
                 switch (ref[i]){
