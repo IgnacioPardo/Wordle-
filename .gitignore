@@ -14,3 +14,6 @@ Makefile
 tests[1]_include.cmake
 wordle
 .breakpoints
+tests[1]_include.cmake
+Makefile
+.DS_Store
