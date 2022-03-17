@@ -4,11 +4,13 @@
 /include
 /lib
 /src
+/build
 cmake_install.cmake 
 CMakeCache.txt
 CPackConfig.cmake
 CPackSourceConfig.cmake
 CTestTestfile.cmake
+Makefile
 tests[1]_include.cmake
 wordle
 .breakpoints
