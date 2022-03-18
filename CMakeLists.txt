@@ -22,7 +22,7 @@ add_executable(
 
 add_executable(
   tests
-  tests/tests.cpp
+  newTest/tests.cpp
   funciones.cpp
 )
 

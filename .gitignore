@@ -17,3 +17,5 @@ wordle
 tests[1]_include.cmake
 Makefile
 .DS_Store
+tests[1]_include.cmake
+tests[1]_tests.cmake
