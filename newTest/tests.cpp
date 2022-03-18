@@ -2,7 +2,6 @@
 #include <vector>
 #include <string>
 #include <gtest/gtest.h>
-#include <filesystem>
 
 TEST(WordleTests, ListadoVacio){
     std::string filename = "newTest/listado_test_vacio.txt";
@@ -12,9 +11,6 @@ TEST(WordleTests, ListadoVacio){
 
 TEST(WordleTests, ListadoLleno){
     std::string filename = "newTest/listado_test_lleno.txt";
-    
-    std::cout << std::__fs::filesystem::current_path() << std::endl;
-
     std::vector<std::string> listado = cargar_listado(filename);
     std::vector<std::string> listado_esperado = {"aviso", "banco", "bolsa", "buzon", "cajon"};
     ASSERT_EQ(listado, listado_esperado);
