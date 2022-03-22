@@ -54,22 +54,31 @@ class Wordle {
 
             newWordle();
             int tries = 0;
+            bool tryStatus = true;
             string in;  
 
             for (int i = 0; i<6; i++){
                 do{
                     renderGame();
                     displayVectorString(prev_words);
+                    if (!tryStatus){
+                        cout << KRED << in << " - Intento invalido" << RST << endl;
+                    }
                     cin >> in;
                     tries = i;
+                    tryStatus = intento_valido(in, wordle_otd, words);
                 }
-                while((!intento_valido(in, wordle_otd, words)) && (in != wordle_otd));
+                while((!tryStatus) && (in != wordle_otd));
                 renderGame();
                 prev_words.push_back(color(in, evaluar_intento(in, wordle_otd)));
                 if (in == wordle_otd)
                     break;
             }
-            hist.push_back(tries);
+            if (in != wordle_otd)
+                hist.push_back(7);
+            else
+                hist.push_back(tries+1);
+
             displayVectorString(prev_words);
 
             cout << wordle_otd << endl;
@@ -145,18 +154,21 @@ class Wordle {
              * Porcentaje de acertados en cada intento
              **/
 
-            vector<int> stats = {0,0,0,0,0,0};
+            vector<int> stats = {0,0,0,0,0,0,0};
             int count = hist.size();
             cout << "Jugadas: " << count << endl;
             for (int _try: hist){
                 stats[_try]++;
             }
 
-            for(int i = 0; i < 6; i++){
+            for(int i = 1; i <= 7; i++){
                 int _try = stats[i];
                 int barWidth = 20;
                 float p = float(float(_try)/float(count));
-                cout << i << ": ";
+                if (i < 7)
+                    cout << KGRN << i << RST << ": ";
+                else
+                    cout << KRED << 'F' << RST << ": ";
                 for (int i = 0; i < barWidth * p; ++i) {
                     cout << "⬜️";
                 }
