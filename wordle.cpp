@@ -13,6 +13,7 @@ using namespace std;
  * para mostrar el Wordle por consola, asi como para resaltar las letras correctas/incorrectas/mal ubicadas.
  * 
  */
+
 class Wordle {
     private:
         vector<string> words; //Palabras permitidas
@@ -27,6 +28,7 @@ class Wordle {
 			 * Crea un nuevo Wordle a partir de un listado de palabras permitidas
 			 *
 			 */
+
             words = cargar_listado(file);
         }
 
@@ -35,10 +37,13 @@ class Wordle {
 			 * Crea una nueva partida de Wordle randomizando la palabra seleccionada
 			 *
 			 */
+
             srand (time(NULL));
             prev_words = {};
             wordle_otd = words[rand() % words.size()];
-            cout << wordle_otd << endl;
+            
+            //Easter Egg para ver la palabra del WORDLE en debugging.
+            //cout << wordle_otd << endl;
         }
 
         void playGame(){
@@ -46,6 +51,7 @@ class Wordle {
 			 * Inicializa un nuevo Wordle, y comienza una partida en modo interactivo por consola
 			 *
 			 */
+
             newWordle();
             int tries = 0;
             string in;  
@@ -74,6 +80,7 @@ class Wordle {
 			 * Limpia la consola y muestra el header " - WORDLE - "
 			 *
 			 */
+
             clear();
             cout << BOLD(FCYN(" - WORDLE - ")) << endl;
         }
@@ -84,6 +91,7 @@ class Wordle {
 			 *
 			 *@param v Un vector de strings a printear linea por linea
 			 */
+
             for (string e: v){
                 cout << e << endl;
             }
@@ -95,6 +103,7 @@ class Wordle {
 			 * Limpia la consola
 			 *
 			 */
+
             printf("\033[2J");
             printf("\033[%d;%dH", 0, 0);
         }
@@ -108,6 +117,7 @@ class Wordle {
 			 * @param ref Un vector de estados por cada letra de in
 			 * @return Un string colorizado a partir de un string y un vector de estados por letra del string in.
 			 */
+
             string out = "";
             for (int i = 0; i < in.size(); i++){
                 switch (ref[i]){
@@ -126,6 +136,15 @@ class Wordle {
         }
 
         void displayStats(){
+            /**
+             * Calcula y muestra por pantalla las estadisticas 
+             * a partir de los datos recolectados en cada partida
+             * al igual que el WORDLE original.
+             * 
+             * Cantidad de partidas jugadas
+             * Porcentaje de acertados en cada intento
+             **/
+
             vector<int> stats = {0,0,0,0,0,0};
             int count = hist.size();
             cout << "Jugadas: " << count << endl;
@@ -147,9 +166,19 @@ class Wordle {
 };
 
 int main(){
+    /**
+     * Interaccion con la implementacion de WORDLE
+     * 
+     * Genera una instancia de Wordle a partir de un listado dado
+     * Crea una partida inicial para jugar
+     * Al finalizar muestra las estadisticas de la instancia de Wordle
+     * Posibilidad de jugar multiples partidas para acumular datos de partidas.
+     * 
+     */
 
-    //const string file = "listado.txt"; 
-    Wordle w = Wordle("listado.txt");
+
+    const string file_path = "listado.txt"; 
+    Wordle w = Wordle(file_path);
     string again = "n";
     do{
         w.playGame();
